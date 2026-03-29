@@ -72,37 +72,56 @@ function nexusSpeak(message) {
 }
 
 function handleWelcomeScreen() {
+    const preloader = document.getElementById('welcomeScreen'); // Menggunakan ID welcomeScreen sesuai HTML Anda
+    const loadingText = document.getElementById('loading-text');
     const bar = document.getElementById('progress-bar');
-    const welcome = document.getElementById('welcomeScreen');
     const mainContent = document.getElementById('main-content');
-    if (!welcome) return;
+    
+    // Validasi agar tidak error jika elemen tidak ditemukan
+    if (!preloader || !loadingText) return;
 
-    // Interval untuk mengupdate angka
+    let counter = 0;
+
     const updateCounter = setInterval(() => {
         counter++;
+        
+        // Update Teks Persentase
         loadingText.innerText = counter + "%";
         
-        // Jika sudah mencapai 100
+        // Update Progress Bar (Jika ada elemennya)
+        if (bar) {
+            bar.style.width = counter + "%";
+        }
+
+        // Jika sudah mencapai 100%
         if (counter === 100) {
-            clearInterval(updateCounter); // Berhenti menghitung
+            clearInterval(updateCounter);
             
-            // Beri jeda 500ms agar user bisa melihat angka 100%
+            // Jeda 500ms agar user bisa melihat angka 100%
             setTimeout(() => {
-                // Hilangkan Preloader
+                // Efek menghilang (Fade Out)
+                preloader.style.transition = "opacity 0.8s ease, visibility 0.8s";
                 preloader.style.opacity = "0";
+                preloader.style.visibility = "hidden";
                 preloader.style.pointerEvents = "none";
-                
-                // Munculkan konten utama (jika Anda pakai efek fade)
-                if(mainContent) mainContent.style.opacity = "1";
-                
-                // Opsional: Hapus preloader dari DOM setelah transisi selesai
+
+                // Munculkan Konten Utama
+                if (mainContent) {
+                    mainContent.style.opacity = "1";
+                    mainContent.style.transform = "translateY(0)"; // Jika ada animasi slide up
+                }
+
+                // Hapus dari layar sepenuhnya setelah animasi selesai
                 setTimeout(() => {
                     preloader.style.display = "none";
                 }, 800);
             }, 500);
         }
-    }, 20); // Kecepatan (20ms per 1%). Total loading sekitar 2 detik.
-});
+    }, 30); // Kecepatan loading (30ms per 1% = ~3 detik)
+}
+
+// Panggil fungsi setelah halaman selesai dimuat
+window.addEventListener('load', handleWelcomeScreen);
 
 function initNavigation() {
     const input = document.getElementById('searchInput');
