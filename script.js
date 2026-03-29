@@ -77,29 +77,32 @@ function handleWelcomeScreen() {
     const mainContent = document.getElementById('main-content');
     if (!welcome) return;
 
-    let progress = 0;
-    const interval = setInterval(() => {
-        progress += Math.floor(Math.random() * 5) + 3;
-        if (bar) bar.style.width = Math.min(progress, 100) + "%";
+    // Interval untuk mengupdate angka
+    const updateCounter = setInterval(() => {
+        counter++;
+        loadingText.innerText = counter + "%";
         
-        if (progress >= 100) {
-            clearInterval(interval);
+        // Jika sudah mencapai 100
+        if (counter === 100) {
+            clearInterval(updateCounter); // Berhenti menghitung
+            
+            // Beri jeda 500ms agar user bisa melihat angka 100%
             setTimeout(() => {
-                welcome.classList.add('fade-out');
-                if (mainContent) {
-                    mainContent.style.display = ''; 
-                    setTimeout(() => mainContent.style.opacity = '1', 50);
-                }
+                // Hilangkan Preloader
+                preloader.style.opacity = "0";
+                preloader.style.pointerEvents = "none";
+                
+                // Munculkan konten utama (jika Anda pakai efek fade)
+                if(mainContent) mainContent.style.opacity = "1";
+                
+                // Opsional: Hapus preloader dari DOM setelah transisi selesai
                 setTimeout(() => {
-                    welcome.style.display = 'none';
-                    nexusSfx.welcome.play().catch(()=>{});
-                    nexusSpeak("Welcome to Emerald Nexus, Hub Mode Activated");
-                    showNotify("System Ready", "Welcome back, Anwarhu");
+                    preloader.style.display = "none";
                 }, 800);
             }, 500);
         }
-    }, 40);
-}
+    }, 20); // Kecepatan (20ms per 1%). Total loading sekitar 2 detik.
+});
 
 function initNavigation() {
     const input = document.getElementById('searchInput');
