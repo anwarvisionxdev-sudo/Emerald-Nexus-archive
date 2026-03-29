@@ -72,55 +72,57 @@ function nexusSpeak(message) {
 }
 
 function handleWelcomeScreen() {
-    const preloader = document.getElementById('welcomeScreen'); // Menggunakan ID welcomeScreen sesuai HTML Anda
+    // 1. Inisialisasi elemen berdasarkan ID yang Anda buat
+    const welcome = document.getElementById('welcomeScreen');
+    const progressBar = document.getElementById('progress-bar');
     const loadingText = document.getElementById('loading-text');
-    const bar = document.getElementById('progress-bar');
-    const mainContent = document.getElementById('main-content');
-    
-    // Validasi agar tidak error jika elemen tidak ditemukan
-    if (!preloader || !loadingText) return;
+    const mainContent = document.getElementById('main-content'); // Pastikan ID ini ada di HTML utama Anda
+
+    // Validasi: Berhenti jika elemen penting tidak ditemukan
+    if (!welcome || !loadingText || !progressBar) {
+        console.error("Sistem Nexus: Elemen loading tidak lengkap.");
+        return;
+    }
 
     let counter = 0;
 
-    const updateCounter = setInterval(() => {
+    // 2. Jalankan Interval Loading
+    const loadingInterval = setInterval(() => {
         counter++;
-        
+
         // Update Teks Persentase
         loadingText.innerText = counter + "%";
-        
-        // Update Progress Bar (Jika ada elemennya)
-        if (bar) {
-            bar.style.width = counter + "%";
-        }
 
-        // Jika sudah mencapai 100%
-        if (counter === 100) {
-            clearInterval(updateCounter);
+        // Update Lebar Progress Bar
+        progressBar.style.width = counter + "%";
+
+        // 3. Logika Selesai (100%)
+        if (counter >= 100) {
+            clearInterval(loadingInterval);
             
-            // Jeda 500ms agar user bisa melihat angka 100%
+            // Beri jeda estetik 500ms agar user melihat angka 100%
             setTimeout(() => {
-                // Efek menghilang (Fade Out)
-                preloader.style.transition = "opacity 0.8s ease, visibility 0.8s";
-                preloader.style.opacity = "0";
-                preloader.style.visibility = "hidden";
-                preloader.style.pointerEvents = "none";
+                // Animasi Menghilang (Fade Out)
+                welcome.style.opacity = "0";
+                welcome.style.transition = "opacity 0.8s ease-in-out";
+                welcome.style.pointerEvents = "none";
 
-                // Munculkan Konten Utama
+                // Munculkan Isi Halaman Utama
                 if (mainContent) {
                     mainContent.style.opacity = "1";
-                    mainContent.style.transform = "translateY(0)"; // Jika ada animasi slide up
+                    mainContent.style.transition = "opacity 1s ease-in-out";
                 }
 
-                // Hapus dari layar sepenuhnya setelah animasi selesai
+                // Hapus elemen dari tampilan setelah animasi selesai
                 setTimeout(() => {
-                    preloader.style.display = "none";
+                    welcome.style.display = "none";
                 }, 800);
             }, 500);
         }
-    }, 30); // Kecepatan loading (30ms per 1% = ~3 detik)
+    }, 25); // Kecepatan: 25ms per 1% (Total ~2.5 detik)
 }
 
-// Panggil fungsi setelah halaman selesai dimuat
+// Jalankan fungsi tepat setelah seluruh resource halaman dimuat
 window.addEventListener('load', handleWelcomeScreen);
 
 function initNavigation() {
