@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emerald Nexus | Windows 11 Xbox Edition</title>
+    <meta name="description" content="Emerald Nexus HUB - The Throne of King Anwarhu">
+    <meta name="robots" content="index, follow">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="mask-icon" href="favicon.svg" color="#00ff88">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<style>
+  .nexus-section {
+    padding: 60px 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+/* Profil Atas */
+.admin-profile-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.profile-circle {
+    width: 80px;
+    height: 80px;
+    background: #333; /* Warna Abu-abu */
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto 15px;
+    border: 2px solid rgba(0, 255, 135, 0.3);
+}
+
+.profile-icon {
+    width: 40px;
+    height: 40px;
+    color: #fff;
+}
+
+/* Glassmorphism Cards */
+.glass-card, .mini-card {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px); /* Support Safari */
+    border: 1px solid rgba(0, 255, 135, 0.2);
+    border-radius: 20px;
+    padding: 25px;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    will-change: transform; /* Optimasi Performa HP */
+}
+
+/* Hover Effect */
+.mini-card:hover {
+    transform: translateY(-10px);
+    background: rgba(0, 255, 135, 0.08);
+    border-color: #00ff87;
+    box-shadow: 0 10px 30px rgba(0, 255, 135, 0.2);
+}
+
+/* Grid Layout */
+.science-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.mini-card h3 {
+    color: #00ff87;
+    font-size: 1.1rem;
+    margin: 10px 0;
+}
+
+.mini-card p {
+    font-size: 0.85rem;
+    opacity: 0.7;
+    line-height: 1.4;
+}
+
+/* Responsif HP */
+@media (max-width: 768px) {
+    .science-grid {
+        grid-template-columns: 1fr 1fr; /* Dua kolom di HP */
+    }
+    .glass-card {
+        padding: 20px;
+    }
+}
+</style>
+<body>
+  
+</body>
