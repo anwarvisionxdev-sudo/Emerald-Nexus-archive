@@ -92,6 +92,259 @@
         padding: 20px;
     }
 }
+
+    /* --- Timeline Global Style --- */
+.legacy-timeline-container {
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Teks Gradasi untuk Judul */
+.text-gradient {
+    background: linear-gradient(90deg, #00ff87, #00e5ff, #a100ff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+.icon-gradient {
+    width: 35px; height: 35px;
+    color: #00ff87; /* Fallback */
+    margin-bottom: 10px;
+}
+
+.timeline-wrapper {
+    position: relative;
+    max-width: 800px;
+    margin: 40px auto 0;
+    padding: 20px 0;
+}
+
+/* Garis Tengah Bercahaya (Gradasi) */
+.timeline-line {
+    position: absolute;
+    top: 0; left: 50%;
+    transform: translateX(-50%);
+    width: 4px; height: 100%;
+    background: linear-gradient(to bottom, #00ff87 0%, #00e5ff 33%, #a100ff 66%, #ffcc00 100%);
+    border-radius: 2px;
+    box-shadow: 0 0 15px rgba(0, 255, 135, 0.3);
+}
+
+/* --- Timeline Items --- */
+.timeline-item {
+    position: relative;
+    width: 50%;
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: flex-start;
+    transition: all 0.3s ease;
+}
+
+/* Titik di Garis Tengah */
+.timeline-dot {
+    position: absolute;
+    top: 20px; left: 50%;
+    transform: translateX(-50%);
+    width: 16px; height: 16px;
+    border-radius: 50%;
+    background: #050505;
+    border: 3px solid;
+    z-index: 10;
+    transition: all 0.3s ease;
+}
+
+/* Konten Kartu Kecil */
+.timeline-content {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    padding: 20px;
+    width: 80%;
+    margin-left: auto; /* Untuk item kiri */
+    margin-right: 30px;
+    text-align: right;
+    position: relative;
+    transition: all 0.4s ease;
+}
+
+/* Mengatur Item Kanan */
+.timeline-item.right {
+    margin-left: auto;
+    justify-content: flex-end;
+}
+
+.timeline-item.right .timeline-content {
+    margin-left: 30px;
+    margin-right: auto;
+    text-align: left;
+}
+
+/* Gaya Teks di Dalam Kartu */
+.time-tag {
+    font-size: 0.75rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    padding: 3px 8px;
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.timeline-content h4 {
+    margin: 10px 0 5px;
+    font-size: 1rem;
+    letter-spacing: 1px;
+}
+
+.timeline-content p {
+    font-size: 0.8rem;
+    opacity: 0.7;
+    line-height: 1.4;
+}
+
+/* --- Warna Spesifik & Hover Efek --- */
+
+/* Emerald (2015) */
+.emerald-stop .timeline-dot { border-color: #00ff87; box-shadow: 0 0 10px #00ff87; }
+.emerald-stop .time-tag { color: #00ff87; }
+.emerald-stop:hover .timeline-content { border-color: #00ff87; background: rgba(0, 255, 135, 0.05); transform: scale(1.03); }
+
+/* Cyan (2019) */
+.cyan-stop .timeline-dot { border-color: #00e5ff; box-shadow: 0 0 10px #00e5ff; }
+.cyan-stop .time-tag { color: #00e5ff; }
+.cyan-stop:hover .timeline-content { border-color: #00e5ff; background: rgba(0, 229, 255, 0.05); transform: scale(1.03); }
+
+/* Purple (2023) */
+.purple-stop .timeline-dot { border-color: #a100ff; box-shadow: 0 0 10px #a100ff; }
+.purple-stop .time-tag { color: #a100ff; }
+.purple-stop:hover .timeline-content { border-color: #a100ff; background: rgba(161, 0, 255, 0.05); transform: scale(1.03); }
+
+/* Gold (2026 Active) */
+.gold-stop .timeline-dot { border-color: #ffcc00; box-shadow: 0 0 15px #ffcc00; background: #ffcc00; }
+.gold-stop .time-tag { color: #ffcc00; background: rgba(255, 204, 0, 0.1); }
+.gold-stop .timeline-content { border-color: rgba(255, 204, 0, 0.4); }
+.gold-stop:hover .timeline-content { border-color: #ffcc00; background: rgba(255, 204, 0, 0.05); transform: scale(1.03); }
+
+/* Efek Berdenyut untuk Tahun Aktif */
+.active-now .timeline-dot {
+    animation: pulseGold 2s infinite;
+}
+
+@keyframes pulseGold {
+    0% { box-shadow: 0 0 0 0 rgba(255, 204, 0, 0.7); }
+    70% { box-shadow: 0 0 0 10px rgba(255, 204, 0, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(255, 204, 0, 0); }
+}
+
+/* --- Responsif HP (Sangat Penting) --- */
+@media (max-width: 600px) {
+    .timeline-line { left: 20px; } /* Pindahkan garis ke kiri */
+    
+    .timeline-item { width: 100%; text-align: left !important; padding-left: 45px; }
+    .timeline-item.right { margin-left: 0; }
+    
+    .timeline-dot { left: 20px; top: 15px; } /* Sesuaikan titik */
+    
+    .timeline-content { 
+        width: 100%; 
+        margin: 0 !important; 
+        text-align: left !important; 
+        padding: 15px;
+    }
+}
+
+    .transmit-btn {
+    background: transparent;
+    border: 2px solid #00ff87;
+    color: #00ff87;
+    padding: 12px 25px;
+    border-radius: 30px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 15px rgba(0, 255, 135, 0.2);
+}
+
+.transmit-btn:hover {
+    background: #00ff87;
+    color: #050505;
+    box-shadow: 0 0 30px rgba(0, 255, 135, 0.5);
+    transform: scale(1.05);
+}
+
+    .logs-container {
+    margin-top: 30px;
+    padding: 20px;
+    border: 1px solid rgba(0, 255, 135, 0.3);
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.logs-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 10px;
+}
+
+.status-indicator {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.pulse-dot {
+    width: 8px;
+    height: 8px;
+    background: #00ff87;
+    border-radius: 50%;
+    box-shadow: 0 0 10px #00ff87;
+    animation: pulse 1.5s infinite;
+}
+
+.status-text {
+    font-size: 10px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    color: #00ff87;
+}
+
+.log-screen {
+    height: 150px;
+    overflow-y: hidden;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 12px;
+    color: rgba(0, 255, 135, 0.8);
+    line-height: 1.6;
+    text-align: left;
+}
+
+.log-entry {
+    margin-bottom: 4px;
+    animation: fadeInLog 0.3s ease-in;
+}
+
+.log-time { color: rgba(255, 255, 255, 0.4); margin-right: 8px; }
+
+@keyframes pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.4; }
+    100% { opacity: 1; }
+}
+
+@keyframes fadeInLog {
+    from { opacity: 0; transform: translateX(-5px); }
+    to { opacity: 1; transform: translateX(0); }
+}
 </style>
 <body>
   <header class="top-header">
@@ -175,6 +428,36 @@
             <p>Sistem ini dibangun dan dikembangkan secara presisi oleh seorang <strong>Junior Scientist</strong> dengan spesialisasi Paleontologi dan Astro-Galaxy. Dengan dedikasi selama lebih dari satu dekade, platform ini berfungsi sebagai pusat sinkronisasi data kehidupan purba dan eksplorasi kosmik.</p>
         </div>
 
+<div class="skills-container glass-card" style="margin-top: 30px;">
+    <h3 style="color: #00ff87; margin-bottom: 20px;">Scientific Proficiency</h3>
+    
+    <div class="skill-item">
+        <p>Paleontology Expertise</p>
+        <div class="perf-bar"><div class="fill" style="width: 98%; background: #00ff87;"></div></div>
+    </div>
+    
+    <div class="skill-item" style="margin-top: 15px;">
+        <p>Astro-Galaxy Research</p>
+        <div class="perf-bar"><div class="fill" style="width: 85%; background: #00ff87;"></div></div>
+    </div>
+
+    <div class="skill-item" style="margin-top: 15px;">
+        <p>Tetris High-Speed Logic (LV 29)</p>
+        <div class="perf-bar"><div class="fill" style="width: 100%; background: #00ff87; box-shadow: 0 0 10px #00ff87;"></div></div>
+    </div>
+</div>
+
+        <div class="stats-grid" style="display: flex; justify-content: space-around; margin: 30px 0; text-align: center;">
+    <div class="stat-item">
+        <h2 id="count-fossils" style="color: #00ff87; margin: 0;">0</h2>
+        <p style="font-size: 10px; opacity: 0.6; letter-spacing: 1px;">FOSSILS INDEXED</p>
+    </div>
+    <div class="stat-item">
+        <h2 id="count-galaxy" style="color: #00e5ff; margin: 0;">0</h2>
+        <p style="font-size: 10px; opacity: 0.6; letter-spacing: 1px;">GALAXY SECTORS</p>
+    </div>
+</div>
+        
         <div class="science-grid">
             <div class="mini-card">
                 <i data-lucide="database"></i>
@@ -203,6 +486,73 @@
             </div>
         </div>
     </div>
+
+    <div class="legacy-timeline-container glass-card" style="margin-top: 40px; padding: 40px 20px;">
+    <div class="timeline-header">
+        <i data-lucide="history" class="icon-gradient"></i>
+        <h2 class="text-gradient">THE 11-YEAR LEGACY</h2>
+        <p class="subtitle">A Journey Through Paleontology & The Cosmos</p>
+    </div>
+
+    <div class="timeline-wrapper">
+        <div class="timeline-line"></div>
+
+        <div class="timeline-item left emerald-stop">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+                <span class="time-tag">2015</span>
+                <h4>THE SPARK</h4>
+                <p>Initial fascination with the Cambrian explosion and Sauropod fossils. First field observations.</p>
+            </div>
+        </div>
+
+        <div class="timeline-item right cyan-stop">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+                <span class="time-tag">2019</span>
+                <h4>COSMIC HORIZONS</h4>
+                <p>Integrating Astro-Biology and Microbacteria research. Mapping Galaxy life signatures.</p>
+            </div>
+        </div>
+
+        <div class="timeline-item left purple-stop">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+                <span class="time-tag">2023</span>
+                <h4>NEXUS PROTOCOL</h4>
+                <p>Development of the first Nexus data synchronization system. Advanced Tetris logic implementation.</p>
+            </div>
+        </div>
+
+        <div class="timeline-item right gold-stop active-now">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+                <span class="time-tag">2026</span>
+                <h4>EMERALD GEN-1</h4>
+                <p>System launch. Commencing global Paleontology digital archive and cosmic data sync.</p>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+    <div class="share-section" style="margin-top: 40px; text-align: center;">
+    <button class="transmit-btn" onclick="shareNexus()">
+        <i data-lucide="share-2"></i> TRANSMIT TO GALAXY
+    </button>
+</div>
+
+    <div class="logs-container glass-card">
+    <div class="logs-header">
+        <div class="status-indicator">
+            <span class="pulse-dot"></span>
+            <span class="status-text">LIVE SYSTEM LOGS</span>
+        </div>
+        <i data-lucide="terminal" class="log-icon"></i>
+    </div>
+    <div id="log-screen" class="log-screen">
+        </div>
+</div>
 </section>
 
         <div class="audio-popup" id="audioPopup" style="z-index: 999; position: fixed; bottom: 20px; right: 20px;">
@@ -281,6 +631,88 @@
     <footer>A example </footer>
     </main>
 
+    <script>
+const logMessages = [
+    "Initializing Emerald-Nexus Gen-1...",
+    "Scanning Cambrian strata for Anomalocaris fossils...",
+    "Astro-Biology: Analyzing Galaxy sector 7-G...",
+    "Syncing database with Legacy Archive (11 Years)...",
+    "Microbiology: Bacteria strain detected in permafrost.",
+    "Database: Sauropod classification updated.",
+    "System: Connection to Nexus-Hub stable.",
+    "Calculating Tetris high-speed logic (LV 29)...",
+    "Archeology: Ancient artifact signal localized.",
+    "Updating CSS Glassmorphism backdrop-filters..."
+];
+        
+function shareNexus() {
+    if (navigator.share) {
+        navigator.share({
+            title: 'Emerald-Nexus Gen',
+            text: 'Discover the 11-Year Legacy of a Junior Scientist.',
+            url: window.location.href
+        }).then(() => console.log('Successful share'))
+          .catch((error) => console.log('Error sharing', error));
+    } else {
+        alert("Link copied to clipboard: " + window.location.href);
+    }
+}
+
+        function addLog() {
+    const logScreen = document.getElementById('log-screen');
+    if (!logScreen) return;
+
+    const now = new Date();
+    const timeStr = now.getHours().toString().padStart(2, '0') + ":" + 
+                    now.getMinutes().toString().padStart(2, '0') + ":" + 
+                    now.getSeconds().toString().padStart(2, '0');
+
+    const randomMsg = logMessages[Math.floor(Math.random() * logMessages.length)];
+    
+    const entry = document.createElement('div');
+    entry.className = 'log-entry';
+    entry.innerHTML = `<span class="log-time">[${timeStr}]</span> ${randomMsg}`;
+
+    logScreen.appendChild(entry);
+
+    // Otomatis hapus log lama agar tidak terlalu panjang
+    if (logScreen.childNodes.length > 7) {
+        logScreen.removeChild(logScreen.firstChild);
+    }
+}
+
+// Jalankan log setiap 3 - 5 detik secara acak
+function startLogging() {
+    addLog();
+    const nextLog = Math.random() * (5000 - 2000) + 2000;
+    setTimeout(startLogging, nextLog);
+}
+
+        function animateCounter(id, target) {
+    let current = 0;
+    const obj = document.getElementById(id);
+    const step = target / 50; // Kecepatan animasi
+    const interval = setInterval(() => {
+        current += step;
+        if (current >= target) {
+            obj.innerText = target + "+";
+            clearInterval(interval);
+        } else {
+            obj.innerText = Math.floor(current);
+        }
+    }, 30);
+}
+
+// Jalankan saat halaman dibuka
+window.addEventListener('load', () => {
+    animateCounter('count-fossils', 1240);
+    animateCounter('count-galaxy', 42);
+});
+
+window.addEventListener('load', startLogging);
+</script>
     <script src="script.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+<script>lucide.createIcons();</script>
 </body>
 </html>
