@@ -94,5 +94,114 @@
 }
 </style>
 <body>
-  
+  <header class="top-header">
+    <button class="hamburger-btn" id="menuToggle" onclick="toggleSidebar()">
+        <i data-lucide="menu"></i> </button>
+
+    <div class="logo-container">
+        <img src="favicon2.png" alt="Nexus Logo" class="main-logo">
+        <span class="logo-text">EMERALD-NEXUS GEN</span>
+    </div>
+</header>
+
+<nav id="navSidebar" class="sidebar">
+    <div class="sidebar-header">
+        <h2>Navigator</h2>
+        <button class="close-btn" onclick="toggleSidebar()">
+            <i data-lucide="x"></i>
+        </button>
+    </div>
+    <ul class="nav-links">
+        <li><a href="index.html"><i data-lucide="home"></i> Home</a></li>
+        <li><a href="admin.html"><i data-lucide="alert-triangle"></i> Admin-Dashboard</a></li>
+        <li><a href="paleontology.html"><i data-lucide="skull"></i> Paleontologi</a></li>
+        <li><a href="sea.html"><i data-lucide="fish"></i> Sea-creatures</a></li>
+        <li><a href="paleo-dino.html"><i data-lucide="bone"></i> Dino</a></li>
+        <li><a href="botany.html"><i data-lucide="leaf"></i> Paleo-botany</a></li>
+        <li><a href="zoo.html"><i data-lucide="paw-print"></i> ZOOLOGY</a></li>
+        <li><a href="aqua.html"><i data-lucide="waves"></i> MARINE LIFE</a></li>
+        <li><a href="astro.html"><i data-lucide="orbit"></i> ASTRONOMI</a></li>
+        <li><a href="galaxy.html"><i data-lucide="star"></i> GALAXY</a></li>
+        <li><a href="about.html"><i data-lucide="user"></i> ABOUT</a></li>
+    </ul>
+</nav>
+
+<main id="main-content" style="display: none; padding-top: 80px;">
+    </main>
+
+    <main>
+        <div class="temporal-widget">
+    <div id="live-clock">00:00:00</div>
+    <div id="live-date">Loading Temporal Data...</div>
+</div>
+
+<div class="status-bar">
+    <div id="clock" class="digital-clock">00:00:00</div>
+    <div id="weather-hub" class="weather-container">
+        <span id="weather-icon">--</span>
+        <span id="temp-value">00</span>°C
+        <small id="location-name">Detecting...</small>
+    </div>
+</div>
+
+<div class="search-wrapper">
+        <div class="search-container">
+            <i class="fas fa-search search-icon"></i>
+            
+            <input type="text" id="nexus-search" placeholder="Jelajahi Alam Semesta Purba..." autocomplete="off">
+            
+            <div class="lds-dual-ring" id="search-loader"></div>
+        </div>
+        
+        <div class="suggestion-box" id="suggestion-box">
+            </div>
+    </div>
+        
+<div id="scannerLine" class="scanner-line"></div>
+<section id="about" class="nexus-section">
+    <div class="admin-profile-header">
+        <div class="profile-circle">
+            <i data-lucide="user" class="profile-icon"></i>
+        </div>
+        <p class="status-badge"><span class="dot"></span> System Architect Online</p>
+    </div>
+
+    <div class="about-container">
+        <div class="glass-card main-about">
+            <div class="card-header">
+                <i data-lucide="info" class="icon-emerald"></i>
+                <h2>EMERALD NEXUS GEN</h2>
+            </div>
+            <p>Sistem ini dibangun dan dikembangkan secara presisi oleh seorang <strong>Junior Scientist</strong> dengan spesialisasi Paleontologi dan Astro-Galaxy. Dengan dedikasi selama lebih dari satu dekade, platform ini berfungsi sebagai pusat sinkronisasi data kehidupan purba dan eksplorasi kosmik.</p>
+        </div>
+
+        <div class="science-grid">
+            <div class="mini-card">
+                <i data-lucide="database"></i>
+                <h3>Paleontology</h3>
+                <p>Arsip Sauropoda & Era Kambrium.</p>
+            </div>
+            <div class="mini-card">
+                <i data-lucide="mountain"></i>
+                <h3>Archaeology</h3>
+                <p>Analisis artefak & sejarah peradaban.</p>
+            </div>
+            <div class="mini-card">
+                <i data-lucide="microscope"></i>
+                <h3>Microbiology</h3>
+                <p>Eksplorasi sel & mikro-bakteria.</p>
+            </div>
+            <div class="mini-card">
+                <i data-lucide="paw-print"></i>
+                <h3>Zoology</h3>
+                <p>Studi fauna & evolusi biologis.</p>
+            </div>
+            <div class="mini-card">
+                <i data-lucide="orbit"></i>
+                <h3>Astro-Biology</h3>
+                <p>Kehidupan kosmik & Galaxy data.</p>
+            </div>
+        </div>
+    </div>
+</section>
 </body>
