@@ -13,28 +13,79 @@
     <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 <style>
-    #searchResults {
-    position: absolute;
+    .video-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    margin-top: 30px;
+}
+
+.video-card {
+    padding: 0; /* Agar video rapat ke pinggir kartu atas */
+    overflow: hidden;
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.video-wrapper {
+    position: relative;
     width: 100%;
-    background: rgba(15, 25, 15, 0.95); /* Warna Emerald Gelap */
-    border: 1px solid var(--glass-border);
-    border-radius: 10px;
-    max-height: 200px;
-    overflow-y: auto;
-    z-index: 9999; /* PASTIKAN PALING ATAS */
-    margin-top: 5px;
+    height: 180px;
+    background: #000;
 }
 
-.search-result-item {
-    padding: 12px;
-    color: white;
-    cursor: pointer;
-    border-bottom: 1px solid rgba(0, 255, 136, 0.1);
-    transition: 0.2s;
+.preview-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Agar video memenuhi kotak */
+    opacity: 0.6; /* Gelap saat diam */
+    transition: opacity 0.5s, transform 0.5s;
 }
 
-.search-result-item:hover {
-    background: rgba(0, 255, 136, 0.2);
+.video-overlay {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 255, 135, 0.05);
+    transition: opacity 0.4s;
+}
+
+.play-icon {
+    color: #00ff87;
+    width: 40px; height: 40px;
+    filter: drop-shadow(0 0 10px #00ff87);
+}
+
+/* --- Efek Hover --- */
+.video-card:hover {
+    transform: translateY(-10px);
+    border-color: #00ff87;
+    box-shadow: 0 15px 35px rgba(0, 255, 135, 0.2);
+}
+
+.video-card:hover .preview-video {
+    opacity: 1; /* Terang saat berputar */
+    transform: scale(1.1); /* Zoom sedikit */
+}
+
+.video-card:hover .video-overlay {
+    opacity: 0; /* Sembunyikan ikon play saat video jalan */
+}
+
+.card-info {
+    padding: 20px;
+    text-align: left;
+}
+
+.tag {
+    font-size: 9px;
+    color: #00ff87;
+    border: 1px solid #00ff87;
+    padding: 2px 6px;
+    border-radius: 4px;
+    letter-spacing: 1px;
 }
 </style>
 <body>
@@ -244,6 +295,48 @@
             }
         </style>
     </div>
+
+    <section id="paleo-media" class="nexus-section">
+    <div class="section-header">
+        <h2 class="text-gradient">CENOZOIC ARCHIVE</h2>
+        <p>Hover to preview fossil reconstruction</p>
+    </div>
+
+    <div class="video-grid">
+        <div class="video-card glass-card" onmouseenter="playPreview(this)" onmouseleave="pausePreview(this)">
+            <div class="video-wrapper">
+                <video class="preview-video" muted loop preload="metadata">
+    <source src="https://player.vimeo.com/external/371433846.sd.mp4?s=23156073a2791760435f30cb75eead005f7a61&profile_id=139&oauth2_token_id=57447761" type="video/mp4">
+    Your browser does not support the video tag.
+</video>
+                <div class="video-overlay">
+                    <i data-lucide="play-circle" class="play-icon"></i>
+                </div>
+            </div>
+            <div class="card-info">
+                <span class="tag">THEROPODA</span>
+                <h3>Tyrannosaurus Rex</h3>
+                <p>Digital biomechanical reconstruction of Cretaceous apex predator.</p>
+            </div>
+        </div>
+
+        <div class="video-card glass-card" onmouseenter="playPreview(this)" onmouseleave="pausePreview(this)">
+            <div class="video-wrapper">
+                <video class="preview-video" muted loop preload="metadata">
+                    <source src="https://www.w3schools.com/html/movie.mp4" type="video/mp4">
+                </video>
+                <div class="video-overlay">
+                    <i data-lucide="play-circle" class="play-icon"></i>
+                </div>
+            </div>
+            <div class="card-info">
+                <span class="tag">SPINOSAURID</span>
+                <h3>Spinosaurus Aegyptiacus</h3>
+                <p>Aquatic adaptation analysis and neural spine structure.</p>
+            </div>
+        </div>
+    </div>
+</section>
 </section>
 
 <section id="logs-section" style="margin: 20px auto; max-width: 900px; padding: 0 20px;">
@@ -365,12 +458,10 @@
         "[SYNC] Menghubungkan ke Garis Waktu Kambrium...",
         "[DATA] Anomalocaris terdeteksi di koordinat laut purba.",
         "[WARN] Fluktuasi dimensi terdeteksi: Wormhole A.R aktif.",
-        "[INFO] Sinkronisasi memori Anwarhu Deitsu berhasil.",
-        "[SEC] Markas Rahasia CEO Kadotay terenkripsi (Yakuza-Grade).",
+        "[INFO] Sinkronisasi memori.",
         "[LIVE] Memindai populasi Sauropoda di Era Mesozoikum...",
-        "[INFO] Diplodocus Hallorum divalidasi oleh Sang Penguasa.",
-        "[AUTH] Akses diberikan: Selamat datang, Sang Raja Zeintsu.",
-        "[CHECK] Melindungi server dari interupsi Dark Decade...",
+        "[INFO] Diplodocus Hallorum."
+        "[CHECK] Melindungi server dari interupsi...",
         "[LOG] Update sistem berhasil dikirim ke GitHub Pages."
     ];
 
@@ -405,6 +496,21 @@
     // Jalankan log setiap 3 detik
     setInterval(addLog, 3000);
     addLog(); // Jalankan pertama kali
+
+    function playPreview(card) {
+    const video = card.querySelector('.preview-video');
+    if (video) {
+        video.play();
+    }
+}
+
+function pausePreview(card) {
+    const video = card.querySelector('.preview-video');
+    if (video) {
+        video.pause();
+        video.currentTime = 0; // Reset ke awal agar selalu siap jadi cuplikan
+    }
+}
 </script>
 
     <script src="script.js"></script>
