@@ -1,6 +1,8 @@
 User-agent: *
 Allow: /
-Disallow: /admin.html
-Disallow: /assets/private/
 
-Sitemap: https://username.github.io/emerald-nexus/sitemap.xml
+# Beri tahu Google di mana letak peta situs Anda
+Sitemap: https://anwarvisionxdev-sudo.github.io/Emerald-Nexus-archive/sitemap.xml
+
+# Opsional: Jika Anda ingin folder assets (gambar/css) tidak muncul di hasil pencarian gambar Google secara berantakan
+Disallow: /assets/
