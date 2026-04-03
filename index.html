@@ -88,85 +88,120 @@
     letter-spacing: 1px;
 }
 
-    /* --- Overlay & Latar Belakang --- */
-.login-wrapper {
+/* --- Wrapper Utama --- */
+.portal-wrapper {
     position: fixed;
     top: 0; left: 0;
     width: 100%; height: 100%;
-    background: #050505; /* Warna dasar sangat gelap */
+    background: #050505;
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 9999;
+    z-index: 10000;
+    transition: all 1s cubic-bezier(0.85, 0, 0.15, 1);
 }
 
-/* --- Efek Tirai Pembuka (Animasi Utama) --- */
-.mist-curtain {
-    position: absolute;
-    width: 50%;
-    height: 100%;
-    background: rgba(10, 10, 10, 0.95);
-    backdrop-filter: blur(15px); /* Blur konten website */
-    z-index: -1;
-    transition: transform 1.2s cubic-bezier(0.87, 0, 0.13, 1);
-}
-
-.curtain-left { left: 0; border-right: 1px solid rgba(0, 255, 135, 0.2); }
-.curtain-right { right: 0; border-left: 1px solid rgba(0, 255, 135, 0.2); }
-
-/* --- Kartu Login (Glassmorphism) --- */
-.login-card {
+/* --- Animasi Muncul Panel Saat Load --- */
+.portal-card {
     width: 90%;
-    max-width: 380px;
-    padding: 50px 35px;
-    border: 1px solid rgba(0, 255, 135, 0.3);
+    max-width: 400px;
+    padding: 50px 30px;
+    background: rgba(0, 255, 135, 0.05); /* Nuansa Hijau Emerald */
+    backdrop-filter: blur(15px); /* Sesuai permintaan: 15px */
+    border: 1px solid rgba(0, 255, 135, 0.2);
+    border-radius: 20px;
     text-align: center;
-    transition: all 0.6s ease;
-    box-shadow: 0 0 30px rgba(0, 255, 135, 0.1);
-}
-
-/* --- Ikon Perisai yang Bercahaya --- */
-.shield-icon {
-    animation: shieldPulse 2.5s infinite;
-}
-
-@keyframes shieldPulse {
-    0% { transform: scale(1); opacity: 0.6; filter: drop-shadow(0 0 5px rgba(0, 255, 135, 0.3)); }
-    50% { transform: scale(1.05); opacity: 1; filter: drop-shadow(0 0 15px rgba(0, 255, 135, 0.7)); }
-    100% { transform: scale(1); opacity: 0.6; filter: drop-shadow(0 0 5px rgba(0, 255, 135, 0.3)); }
-}
-
-/* --- Tombol Login yang Berdenyut --- */
-.login-btn {
-    position: relative;
-    overflow: hidden;
-    background: transparent;
-    border: 2px solid #00ff87;
-    color: #00ff87;
-    font-weight: bold;
-    letter-spacing: 1px;
-    transition: all 0.3s;
-}
-
-.login-btn:hover {
-    background: #00ff87;
-    color: #000;
-    box-shadow: 0 0 25px rgba(0, 255, 135, 0.6);
-}
-
-/* --- Class untuk Menjalankan Animasi Buka --- */
-.access-granted .curtain-left { transform: translateX(-100%); }
-.access-granted .curtain-right { transform: translateX(100%); }
-
-.access-granted .login-card {
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.5);
+    
+    /* Animasi muncul ke atas */
     opacity: 0;
-    transform: scale(1.2) translateY(-20px);
-    pointer-events: none;
+    transform: translateY(30px);
+    animation: fadeUp 1s forwards 0.5s; 
 }
 
-/* Menghilangkan seluruh overlay setelah animasi selesai */
-.access-granted-final {
-    display: none !important;
+@keyframes fadeUp {
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- Elemen UI Canggih --- */
+.status-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.pulse-dot {
+    width: 8px; height: 8px;
+    background: #00ff87;
+    border-radius: 50%;
+    box-shadow: 0 0 10px #00ff87;
+    animation: pulse 1.5s infinite;
+}
+
+.nexus-title {
+    color: #fff;
+    letter-spacing: 5px;
+    font-size: 1.8rem;
+    margin: 0;
+    text-shadow: 0 0 10px rgba(0, 255, 135, 0.5);
+}
+
+.nexus-subtitle {
+    color: #00ff87;
+    font-size: 0.7rem;
+    letter-spacing: 3px;
+    margin-top: 5px;
+    opacity: 0.7;
+}
+
+/* --- Tombol & Loading Bar --- */
+.loading-bar-container {
+    width: 100%;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.1);
+    margin: 30px 0;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.loading-progress {
+    width: 0%;
+    height: 100%;
+    background: #00ff87;
+    box-shadow: 0 0 10px #00ff87;
+    transition: width 0.5s;
+}
+
+.init-btn {
+    background: transparent;
+    border: 1px solid #00ff87;
+    color: #00ff87;
+    padding: 12px 30px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: 0.3s;
+    border-radius: 5px;
+}
+
+.init-btn:hover {
+    background: rgba(0, 255, 135, 0.1);
+    box-shadow: 0 0 20px rgba(0, 255, 135, 0.3);
+}
+
+/* --- Animasi Saat Verifikasi Selesai --- */
+.portal-wrapper.verified {
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(1.1); /* Efek zoom out saat masuk */
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.5); opacity: 0.5; }
+    100% { transform: scale(1); opacity: 1; }
 }
 </style>
 <body>
@@ -185,27 +220,25 @@
     </div>
 </div>
 
-    <div id="login-overlay" class="login-wrapper">
-    <div class="mist-curtain curtain-left"></div>
-    <div class="mist-curtain curtain-right"></div>
-    
-    <div class="login-card glass-card">
-        <div style="text-align: center; margin-bottom: 25px;">
-            <i data-lucide="shield-check" class="shield-icon" style="color: #00ff87; width: 45px; height: 45px; opacity: 0.8;"></i>
-            <h2 style="margin-top: 15px; letter-spacing: 3px; font-weight: bold;">SYSTEM ACCESS</h2>
-            <p style="font-size: 0.7rem; opacity: 0.5; letter-spacing: 1px;">PROTOKOL KEAMANAN EMERALD NEXUS</p>
+    <div id="portal-overlay" class="portal-wrapper">
+    <div class="portal-card glass-card">
+        <div class="status-header">
+            <div class="pulse-dot"></div>
+            <span class="status-text">SYSTEM READY</span>
         </div>
         
-        <div class="input-group">
-            <input type="password" id="passkey" placeholder="ENTER ACCESS KEY..." autocomplete="off">
-            <button onclick="checkAccess()" class="login-btn">
-                <span>INITIALIZE ARCHIVE</span>
-            </button>
-        </div>
+        <h1 class="nexus-title">EMERALD NEXUS</h1>
+        <p class="nexus-subtitle">GEN-ARCHIVE OFFICIAL CENTER</p>
         
-        <p id="login-msg" class="login-error" style="display: none;">
-            INVALID KEY. ACCESS DENIED.
-        </p>
+        <div class="loading-bar-container">
+            <div id="loading-progress" class="loading-progress"></div>
+        </div>
+
+        <button onclick="startInitialization()" id="init-btn" class="init-btn">
+            ACCESS ARCHIVE
+        </button>
+        
+        <p class="copyright-text">AUTHORIZED ACCESS ONLY • KING ANWARHU</p>
     </div>
 </div>
 
@@ -649,47 +682,31 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-// Ganti KUNCI_RAHASIA dengan passkey pilihan Anda
-const CORRECT_PASSKEY = "ANWARHU11"; 
+function startInitialization() {
+    const btn = document.getElementById('init-btn');
+    const bar = document.getElementById('loading-progress');
+    const portal = document.getElementById('portal-overlay');
+    
+    // Ubah status tombol
+    btn.innerText = "SYNCHRONIZING...";
+    btn.style.pointerEvents = "none";
+    btn.style.opacity = "0.5";
 
-function checkAccess() {
-    const key = document.getElementById('passkey').value;
-    const overlay = document.getElementById('login-overlay');
-    const msg = document.getElementById('login-msg');
-    const card = document.querySelector('.login-card');
-
-    if (key.toUpperCase() === CORRECT_PASSKEY) {
-        // 1. Jalankan animasi "Access Granted" (Tirai terbuka)
-        overlay.classList.add('access-granted');
-        console.log("Access Granted. Welcome, Anwarhu.");
-        
-        // 2. Sembunyikan pesan error jika ada
-        msg.style.display = 'none';
-
-        // 3. Hapus seluruh overlay setelah animasi selesai (1.2 detik)
-        setTimeout(() => {
-            overlay.classList.add('access-granted-final');
-        }, 1200); // Harus sama dengan durasi transition CSS
-        
-    } else {
-        // 1. Tampilkan pesan error
-        msg.style.display = 'block';
-        
-        // 2. Efek getar pada kartu jika salah
-        card.style.animation = "shake 0.25s ease-in-out 0s 2";
-        setTimeout(() => card.style.animation = "", 500); // Reset animasi shake
-        
-        // 3. Kosongkan input bar
-        document.getElementById('passkey').value = "";
-    }
+    // Simulasi loading progress
+    let width = 0;
+    const interval = setInterval(() => {
+        if (width >= 100) {
+            clearInterval(interval);
+            // Tambahkan class untuk animasi penutup
+            portal.classList.add('verified');
+            console.log("Emerald Nexus Initialized. Access Granted.");
+        } else {
+            width += Math.random() * 15; // Kecepatan loading acak biar real
+            if (width > 100) width = 100;
+            bar.style.width = width + '%';
+        }
+    }, 150);
 }
-
-// Tambahkan fungsi tekan Enter untuk login
-document.getElementById('passkey')?.addEventListener('keypress', function (e) {
-    if (e.key === 'Enter') {
-        checkAccess();
-    }
-});
 </script>
 
     <script src="script.js"></script>
