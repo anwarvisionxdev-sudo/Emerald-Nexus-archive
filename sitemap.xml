@@ -1,57 +1,82 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  
+
   <url>
-    <loc>https://username.github.io/emerald-nexus/index.html</loc>
+    <loc>https://anwarvisionxdev-sudo.github.io/Emerald-Nexus-archive/index.html</loc>
+    <lastmod>2026-04-03</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
-  <url>
-    <loc>https://username.github.io/emerald-nexus/about.html</loc>
-    <priority>0.8</priority>
-  </url>
 
   <url>
-    <loc>https://username.github.io/emerald-nexus/paleontology.html</loc>
+    <loc>https://anwarvisionxdev-sudo.github.io/Emerald-Nexus-archive/paleontology.html</loc>
+    <lastmod>2026-04-03</lastmod>
+    <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://username.github.io/emerald-nexus/paleo-dino.html</loc>
+    <loc>https://anwarvisionxdev-sudo.github.io/Emerald-Nexus-archive/paleo-dino.html</loc>
+    <lastmod>2026-04-03</lastmod>
+    <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://username.github.io/emerald-nexus/timeline.html</loc>
+    <loc>https://anwarvisionxdev-sudo.github.io/Emerald-Nexus-archive/timeline.html</loc>
+    <lastmod>2026-04-03</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://username.github.io/emerald-nexus/zoo.html</loc>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://username.github.io/emerald-nexus/aqua.html</loc>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://username.github.io/emerald-nexus/sea.html</loc>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://username.github.io/emerald-nexus/botany.html</loc>
-    <priority>0.7</priority>
-  </url>
-
-  <url>
-    <loc>https://username.github.io/emerald-nexus/astro.html</loc>
+    <loc>https://anwarvisionxdev-sudo.github.io/Emerald-Nexus-archive/sea.html</loc>
+    <lastmod>2026-04-03</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://username.github.io/emerald-nexus/galaxy.html</loc>
+    <loc>https://anwarvisionxdev-sudo.github.io/Emerald-Nexus-archive/aqua.html</loc>
+    <lastmod>2026-04-03</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://username.github.io/emerald-nexus/admin.html</loc>
-    <priority>0.1</priority>
+    <loc>https://anwarvisionxdev-sudo.github.io/Emerald-Nexus-archive/astro.html</loc>
+    <lastmod>2026-04-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://anwarvisionxdev-sudo.github.io/Emerald-Nexus-archive/galaxy.html</loc>
+    <lastmod>2026-04-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://anwarvisionxdev-sudo.github.io/Emerald-Nexus-archive/botany.html</loc>
+    <lastmod>2026-04-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://anwarvisionxdev-sudo.github.io/Emerald-Nexus-archive/zoo.html</loc>
+    <lastmod>2026-04-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://anwarvisionxdev-sudo.github.io/Emerald-Nexus-archive/about.html</loc>
+    <lastmod>2026-04-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://anwarvisionxdev-sudo.github.io/Emerald-Nexus-archive/admin.html</loc>
+    <lastmod>2026-04-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.3</priority>
   </url>
 
 </urlset>
