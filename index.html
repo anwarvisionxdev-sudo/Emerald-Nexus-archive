@@ -87,6 +87,87 @@
     border-radius: 4px;
     letter-spacing: 1px;
 }
+
+    /* --- Overlay & Latar Belakang --- */
+.login-wrapper {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: #050505; /* Warna dasar sangat gelap */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+/* --- Efek Tirai Pembuka (Animasi Utama) --- */
+.mist-curtain {
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    background: rgba(10, 10, 10, 0.95);
+    backdrop-filter: blur(15px); /* Blur konten website */
+    z-index: -1;
+    transition: transform 1.2s cubic-bezier(0.87, 0, 0.13, 1);
+}
+
+.curtain-left { left: 0; border-right: 1px solid rgba(0, 255, 135, 0.2); }
+.curtain-right { right: 0; border-left: 1px solid rgba(0, 255, 135, 0.2); }
+
+/* --- Kartu Login (Glassmorphism) --- */
+.login-card {
+    width: 90%;
+    max-width: 380px;
+    padding: 50px 35px;
+    border: 1px solid rgba(0, 255, 135, 0.3);
+    text-align: center;
+    transition: all 0.6s ease;
+    box-shadow: 0 0 30px rgba(0, 255, 135, 0.1);
+}
+
+/* --- Ikon Perisai yang Bercahaya --- */
+.shield-icon {
+    animation: shieldPulse 2.5s infinite;
+}
+
+@keyframes shieldPulse {
+    0% { transform: scale(1); opacity: 0.6; filter: drop-shadow(0 0 5px rgba(0, 255, 135, 0.3)); }
+    50% { transform: scale(1.05); opacity: 1; filter: drop-shadow(0 0 15px rgba(0, 255, 135, 0.7)); }
+    100% { transform: scale(1); opacity: 0.6; filter: drop-shadow(0 0 5px rgba(0, 255, 135, 0.3)); }
+}
+
+/* --- Tombol Login yang Berdenyut --- */
+.login-btn {
+    position: relative;
+    overflow: hidden;
+    background: transparent;
+    border: 2px solid #00ff87;
+    color: #00ff87;
+    font-weight: bold;
+    letter-spacing: 1px;
+    transition: all 0.3s;
+}
+
+.login-btn:hover {
+    background: #00ff87;
+    color: #000;
+    box-shadow: 0 0 25px rgba(0, 255, 135, 0.6);
+}
+
+/* --- Class untuk Menjalankan Animasi Buka --- */
+.access-granted .curtain-left { transform: translateX(-100%); }
+.access-granted .curtain-right { transform: translateX(100%); }
+
+.access-granted .login-card {
+    opacity: 0;
+    transform: scale(1.2) translateY(-20px);
+    pointer-events: none;
+}
+
+/* Menghilangkan seluruh overlay setelah animasi selesai */
+.access-granted-final {
+    display: none !important;
+}
 </style>
 <body>
 <div id="welcomeScreen" class="welcome-overlay">
@@ -101,6 +182,30 @@
             
             <div id="loading-text">0%</div>
         </div>
+    </div>
+</div>
+
+    <div id="login-overlay" class="login-wrapper">
+    <div class="mist-curtain curtain-left"></div>
+    <div class="mist-curtain curtain-right"></div>
+    
+    <div class="login-card glass-card">
+        <div style="text-align: center; margin-bottom: 25px;">
+            <i data-lucide="shield-check" class="shield-icon" style="color: #00ff87; width: 45px; height: 45px; opacity: 0.8;"></i>
+            <h2 style="margin-top: 15px; letter-spacing: 3px; font-weight: bold;">SYSTEM ACCESS</h2>
+            <p style="font-size: 0.7rem; opacity: 0.5; letter-spacing: 1px;">PROTOKOL KEAMANAN EMERALD NEXUS</p>
+        </div>
+        
+        <div class="input-group">
+            <input type="password" id="passkey" placeholder="ENTER ACCESS KEY..." autocomplete="off">
+            <button onclick="checkAccess()" class="login-btn">
+                <span>INITIALIZE ARCHIVE</span>
+            </button>
+        </div>
+        
+        <p id="login-msg" class="login-error" style="display: none;">
+            INVALID KEY. ACCESS DENIED.
+        </p>
     </div>
 </div>
 
@@ -541,6 +646,48 @@ document.addEventListener('DOMContentLoaded', () => {
     // Inisialisasi Lucide Icons jika dipakai
     if (typeof lucide !== 'undefined') {
         lucide.createIcons();
+    }
+});
+
+// Ganti KUNCI_RAHASIA dengan passkey pilihan Anda
+const CORRECT_PASSKEY = "ANWARHU11"; 
+
+function checkAccess() {
+    const key = document.getElementById('passkey').value;
+    const overlay = document.getElementById('login-overlay');
+    const msg = document.getElementById('login-msg');
+    const card = document.querySelector('.login-card');
+
+    if (key.toUpperCase() === CORRECT_PASSKEY) {
+        // 1. Jalankan animasi "Access Granted" (Tirai terbuka)
+        overlay.classList.add('access-granted');
+        console.log("Access Granted. Welcome, Anwarhu.");
+        
+        // 2. Sembunyikan pesan error jika ada
+        msg.style.display = 'none';
+
+        // 3. Hapus seluruh overlay setelah animasi selesai (1.2 detik)
+        setTimeout(() => {
+            overlay.classList.add('access-granted-final');
+        }, 1200); // Harus sama dengan durasi transition CSS
+        
+    } else {
+        // 1. Tampilkan pesan error
+        msg.style.display = 'block';
+        
+        // 2. Efek getar pada kartu jika salah
+        card.style.animation = "shake 0.25s ease-in-out 0s 2";
+        setTimeout(() => card.style.animation = "", 500); // Reset animasi shake
+        
+        // 3. Kosongkan input bar
+        document.getElementById('passkey').value = "";
+    }
+}
+
+// Tambahkan fungsi tekan Enter untuk login
+document.getElementById('passkey')?.addEventListener('keypress', function (e) {
+    if (e.key === 'Enter') {
+        checkAccess();
     }
 });
 </script>
