@@ -1,8 +1,21 @@
+# ==========================================
+# ROBOTS.TXT FOR EMERALD LEICHGON GEN
+# AUTHOR: ANWARHU (KING ANWARHU)
+# ==========================================
+
 User-agent: *
 Allow: /
 
-# Beri tahu Google di mana letak peta situs Anda
-Sitemap: https://anwarvisionxdev-sudo.github.io/Emerald-Nexus-archive/sitemap.xml
+# Jangan biarkan Google mengindeks file aset mentah agar pencarian tetap rapi
+Disallow: css/
+Disallow: js/
+Disallow: vendor/
 
-# Opsional: Jika Anda ingin folder assets (gambar/css) tidak muncul di hasil pencarian gambar Google secara berantakan
-Disallow: /assets/
+# Halaman Admin sebaiknya tidak muncul di hasil pencarian publik untuk keamanan
+Disallow: /admin.html
+
+# Beri tahu Google lokasi peta jalan website Anda
+Sitemap: https://anwarvisionxdev-sudo.github.io/Emerald-Leichgon-gen/sitemap.xml
+
+# Jika nanti domain nexus-gen.io sudah aktif sepenuhnya, gunakan baris ini:
+# Sitemap: https://nexus-gen.io/sitemap.xml
