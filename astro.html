@@ -134,6 +134,244 @@
 .planet-card {
     animation: planetFloat 6s ease-in-out infinite, emeraldGlow 4s infinite;
 }
+
+    .galaxy-sector {
+    padding: 40px;
+    background: radial-gradient(circle at top, #0a1a12 0%, #050505 100%);
+}
+
+.sector-title {
+    color: #00ff87;
+    text-align: center;
+    letter-spacing: 10px;
+    text-transform: uppercase;
+    margin-bottom: 50px;
+    font-weight: 300;
+}
+
+.nebula-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.astro-card {
+    border-radius: 15px;
+    overflow: hidden;
+    border: 1px solid rgba(0, 255, 135, 0.1);
+    transition: 0.5s;
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.astro-card:hover {
+    transform: translateY(-10px);
+    border-color: #00ff87;
+    box-shadow: 0 10px 30px rgba(0, 255, 135, 0.2);
+}
+
+.card-image img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    filter: saturate(1.2) contrast(1.1);
+}
+
+.card-content {
+    padding: 20px;
+}
+
+.card-content h3 {
+    color: #fff;
+    margin-bottom: 10px;
+    font-size: 1.4rem;
+}
+
+.astro-fact {
+    color: #ccc;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.status-tag {
+    font-size: 0.7rem;
+    color: #00ff87;
+    border: 1px solid #00ff87;
+    padding: 4px 10px;
+    border-radius: 50px;
+    background: rgba(0, 255, 135, 0.05);
+}
+
+.exoplanet-section {
+    padding: 60px 20px;
+    background: #020a05;
+}
+
+.glow-text {
+    color: #00ff87;
+    text-shadow: 0 0 20px rgba(0, 255, 135, 0.6);
+    text-align: center;
+    letter-spacing: 5px;
+}
+
+.data-status {
+    color: #888;
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.8rem;
+    margin-bottom: 40px;
+}
+
+.planet-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+}
+
+.planet-card {
+    width: 350px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(0, 255, 135, 0.15);
+    border-radius: 20px;
+    overflow: hidden;
+    backdrop-filter: blur(15px);
+    transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.planet-card:hover {
+    transform: scale(1.05);
+    border-color: #00ff87;
+    box-shadow: 0 0 30px rgba(0, 255, 135, 0.1);
+}
+
+.planet-visual {
+    position: relative;
+    height: 180px;
+}
+
+.planet-visual img {
+    width: 100%; height: 100%; object-fit: cover;
+    mix-blend-mode: screen;
+}
+
+.planet-overlay {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(transparent, #020a05);
+}
+
+.planet-info {
+    padding: 20px;
+}
+
+.planet-name {
+    color: #fff;
+    margin: 0 0 15px 0;
+    font-size: 1.5rem;
+}
+
+.stat-grid {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    font-size: 0.75rem;
+    color: #00ff87;
+}
+
+.habitability-bar {
+    width: 100%; height: 4px;
+    background: rgba(255,255,255,0.1);
+    margin-top: 15px;
+    border-radius: 2px;
+}
+
+.habitability-bar .fill {
+    height: 100%;
+    background: #00ff87;
+    box-shadow: 0 0 10px #00ff87;
+}
+
+.label {
+    font-size: 0.6rem;
+    color: #888;
+    display: block;
+    margin-top: 5px;
+}
+
+    .deep-space-void {
+    padding: 60px 5%;
+    background: #000; /* Hitam total untuk kedalaman luar angkasa */
+    color: #fff;
+}
+
+.title-void {
+    color: #00ff87;
+    text-align: center;
+    font-size: 2.5rem;
+    letter-spacing: 8px;
+    margin-bottom: 5px;
+}
+
+.warning-text {
+    color: #ff3e3e; /* Merah peringatan untuk Black Hole */
+    text-align: center;
+    font-size: 0.7rem;
+    letter-spacing: 3px;
+    margin-bottom: 40px;
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    50% { opacity: 0.3; }
+}
+
+.void-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+}
+
+.void-card {
+    background: rgba(10, 10, 10, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    overflow: hidden;
+    transition: 0.4s;
+    position: relative;
+}
+
+.void-card:hover {
+    border-color: #00ff87;
+    box-shadow: 0 0 30px rgba(0, 255, 135, 0.15);
+}
+
+.void-img-box img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    filter: grayscale(0.2) contrast(1.2);
+}
+
+.void-info {
+    padding: 25px;
+}
+
+.danger-bar, .temp-bar {
+    width: 100%;
+    height: 3px;
+    background: #222;
+    margin: 15px 0 5px 0;
+}
+
+.danger-bar .fill { background: #ff3e3e; box-shadow: 0 0 10px #ff3e3e; }
+.temp-bar .fill { background: #00ff87; box-shadow: 0 0 10px #00ff87; }
+
+.void-label {
+    font-size: 0.6rem;
+    color: #555;
+    text-transform: uppercase;
+}
 </style>
 
 <div id="nexusAchievement" class="achievement-notif">
@@ -316,6 +554,133 @@
 </div>
 </section>
 
+<section class="galaxy-sector">
+    <h2 class="sector-title">OBSERVATORY: GALAXY & DEEP SPACE</h2>
+    
+    <div class="nebula-grid">
+        <div class="astro-card glass">
+            <div class="card-image">
+                <img src="https://images.pexels.com/photos/1906658/pexels-photo-1906658.jpeg" alt="Andromeda Galaxy">
+            </div>
+            <div class="card-content">
+                <h3>Andromeda (M31)</h3>
+                <p class="astro-fact">Galaksi spiral terdekat yang sedang melaju ke arah Bima Sakti dengan kecepatan 110 km/detik. Kita akan bertabrakan dalam 4 miliar tahun.</p>
+                <span class="status-tag">COLLISION COURSE</span>
+            </div>
+        </div>
+
+        <div class="astro-card glass">
+            <div class="card-image">
+                <img src="https://images.pexels.com/photos/2034892/pexels-photo-2034892.jpeg" alt="Black Hole Illustration">
+            </div>
+            <div class="card-content">
+                <h3>Event Horizon</h3>
+                <p class="astro-fact">Di pusat galaksi kita terdapat Sagittarius A*, sebuah Lubang Hitam supermasif dengan massa 4 juta kali matahari kita.</p>
+                <span class="status-tag">GRAVITY SINGULARITY</span>
+            </div>
+        </div>
+
+        <div class="astro-card glass">
+            <div class="card-image">
+                <img src="https://images.pexels.com/photos/1252890/pexels-photo-1252890.jpeg" alt="Nebula">
+            </div>
+            <div class="card-content">
+                <h3>Star Nursery</h3>
+                <p class="astro-fact">Nebula adalah tempat lahirnya bintang. Terdiri dari debu kosmik dan gas hidrogen yang memampat selama jutaan tahun.</p>
+                <span class="status-tag">STELLAR GENESIS</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="exoplanet-section">
+    <div class="section-header">
+        <h2 class="glow-text">HABITABLE ZONE SCANNER</h2>
+        <p class="data-status">STATUS: SEARCHING FOR SECOND EARTH...</p>
+    </div>
+
+    <div class="planet-container">
+        <div class="planet-card glassmorphism">
+            <div class="planet-visual">
+                <img src="https://images.pexels.com/photos/39561/solar-flare-sun-eruption-energy-39561.jpeg" alt="Exoplanet Visual">
+                <div class="planet-overlay"></div>
+            </div>
+            <div class="planet-info">
+                <h3 class="planet-name">Kepler-186f</h3>
+                <div class="stat-grid">
+                    <div class="stat-item"><span>Distance:</span> <strong>582 Light Years</strong></div>
+                    <div class="stat-item"><span>Similarity Index:</span> <strong>0.64</strong></div>
+                </div>
+                <p class="planet-desc">Planet pertama seukuran Bumi yang ditemukan di "Zona Layak Huni". Memiliki potensi air cair di permukaannya dan kemungkinan atmosfer yang stabil.</p>
+                <div class="habitability-bar"><div class="fill" style="width: 85%;"></div></div>
+                <span class="label">HABITABILITY POTENTIAL: 85%</span>
+            </div>
+        </div>
+
+        <div class="planet-card glassmorphism">
+            <div class="planet-visual">
+                <img src="https://images.pexels.com/photos/1162251/pexels-photo-1162251.jpeg" alt="Deep Space">
+                <div class="planet-overlay"></div>
+            </div>
+            <div class="planet-info">
+                <h3 class="planet-name">Proxima b</h3>
+                <div class="stat-grid">
+                    <div class="stat-item"><span>Distance:</span> <strong>4.2 Light Years</strong></div>
+                    <div class="stat-item"><span>Star Type:</span> <strong>Red Dwarf</strong></div>
+                </div>
+                <p class="planet-desc">Tetangga terdekat kita. Meskipun mengorbit bintang katai merah yang aktif, planet ini berada di zona di mana kehidupan mikroskopis mungkin berevolusi.</p>
+                <div class="habitability-bar"><div class="fill" style="width: 70%;"></div></div>
+                <span class="label">HABITABILITY POTENTIAL: 70%</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="deep-space-void">
+    <div class="void-header">
+        <h2 class="title-void">THE EVENT HORIZON ARCHIVE</h2>
+        <p class="warning-text">CAUTION: GRAVITATIONAL SINGULARITY DETECTED</p>
+    </div>
+
+    <div class="void-grid">
+        <div class="void-card glass">
+            <div class="void-img-box">
+                <img src="https://images.pexels.com/photos/2034892/pexels-photo-2034892.jpeg" alt="Black Hole">
+            </div>
+            <div class="void-info">
+                <h3>Sagittarius A*</h3>
+                <p>Berada tepat di jantung Bima Sakti. Massanya 4 juta kali lebih besar dari Matahari kita. Tanpanya, galaksi kita akan berantakan.</p>
+                <div class="danger-bar"><div class="fill" style="width: 100%;"></div></div>
+                <span class="void-label">GRAVITY LEVEL: INFINITE</span>
+            </div>
+        </div>
+
+        <div class="void-card glass">
+            <div class="void-img-box">
+                <img src="https://images.pexels.com/photos/39561/solar-flare-sun-eruption-energy-39561.jpeg" alt="Red Supergiant">
+            </div>
+            <div class="void-info">
+                <h3>Betelgeuse (Red Supergiant)</h3>
+                <p>Bintang raksasa di rasi Orion. Jika diletakkan di pusat tata surya kita, ukurannya akan menelan Merkurius, Venus, Bumi, hingga Mars.</p>
+                <div class="temp-bar"><div class="fill" style="width: 40%;"></div></div>
+                <span class="void-label">TEMPERATURE: 3,500 K (COLD BUT MASSIVE)</span>
+            </div>
+        </div>
+        
+        <div class="void-card glass">
+            <div class="void-img-box">
+                <img src="https://images.pexels.com/photos/1252890/pexels-photo-1252890.jpeg" alt="Blue Star">
+            </div>
+            <div class="void-info">
+                <h3>Sirius A (Blue-White Star)</h3>
+                <p>Bintang paling terang di langit malam. 2x lebih besar dari Matahari dan memancarkan cahaya biru yang sangat panas dan tajam.</p>
+                <div class="temp-bar"><div class="fill" style="width: 90%;"></div></div>
+                <span class="void-label">TEMPERATURE: 9,940 K (ULTRA HOT)</span>
+            </div>
+        </div>
+    </div>
+</section>
+        
 <div class="audio-popup" id="audioPopup" style="z-index: 999; position: fixed; bottom: 20px; right: 20px;">
     <div class="audio-container" style="background: rgba(10, 20, 10, 0.8); backdrop-filter: blur(20px); border: 1px solid rgba(80, 200, 120, 0.4); padding: 15px; border-radius: 15px; width: 320px; display: flex; align-items: center; gap: 12px; box-shadow: 0 10px 40px rgba(0,0,0,0.6);">
         
@@ -392,6 +757,23 @@
     <footer>A example </footer>
     </main>
 <script>
+// Opsional: Script sederhana untuk partikel bintang
+function createStars() {
+    const space = document.querySelector('.galaxy-sector');
+    for (let i = 0; i < 50; i++) {
+        let star = document.createElement('div');
+        star.style.position = 'absolute';
+        star.style.width = '2px';
+        star.style.height = '2px';
+        star.style.background = '#fff';
+        star.style.top = Math.random() * 100 + '%';
+        star.style.left = Math.random() * 100 + '%';
+        star.style.opacity = Math.random();
+        space.appendChild(star);
+    }
+}
+createStars();
+    
     function initISSTracker() {
     const latEl = document.getElementById('iss-lat');
     const lonEl = document.getElementById('iss-lon');
